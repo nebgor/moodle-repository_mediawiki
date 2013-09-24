@@ -25,7 +25,7 @@
  */
 
 $string['keyword'] = 'Search for';
-$string['pluginname'] = 'Wikimedia';
+$string['pluginname'] = 'Mediawiki';
 $string['mediawiki:view'] = 'View mediawiki repository';
 $string['mediawiki_commonsurl'] = 'Wikimedia alternate files URL';
 $string['mediawiki_url'] = 'Wikimedia URL';
