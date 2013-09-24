@@ -18,7 +18,9 @@
  * Version details
  *
  * @package    repository
- * @subpackage wikimedia
+ * @subpackage mediawiki
+ * @copyright  2013 Aparup Banerjee
+ * @author     Aparup Banerjee <aparup@moodle.com>
  * @copyright  2009 Dongsheng Cai
  * @author     Dongsheng Cai <dongsheng@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -26,6 +28,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2013050100;        // The current plugin version (Date: YYYYMMDDXX)
-$plugin->requires  = 2013050100;        // Requires this Moodle version
-$plugin->component = 'repository_wikimedia'; // Full name of the plugin (used for diagnostics)
+$plugin->release   = 'precorious';
+$plugin->maturity  = MATURITY_STABLE;
+$plugin->version   = 2013092400;        // The current plugin version (Date: YYYYMMDDXX)
+$plugin->requires  = 2012062500;        // Requires this Moodle version
+$plugin->component = 'repository_mediawiki'; // Full name of the plugin (used for diagnostics)
