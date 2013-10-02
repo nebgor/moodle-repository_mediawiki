@@ -27,8 +27,8 @@
 $string['keyword'] = 'Search for';
 $string['pluginname'] = 'Mediawiki';
 $string['mediawiki:view'] = 'View mediawiki repository';
-$string['mediawiki_commonsurl'] = 'Wikimedia alternate files URL';
-$string['mediawiki_url'] = 'Wikimedia URL';
-$string['configplugin'] = 'Wikimedia repository type configuration';
+$string['mediawiki_commonsurl'] = 'Mediawiki alternate files URL';
+$string['mediawiki_url'] = 'Mediawiki URL';
+$string['configplugin'] = 'Mediawiki repository type configuration';
 $string['maxwidth'] = 'Max image width (px)';
 $string['maxheight'] = 'Max image height (px)';
