@@ -18,16 +18,16 @@
  * wikimedia class
  * class for communication with Wikimedia Commons API
  *
- * @author Dongsheng Cai <dongsheng@moodle.com>, Raul Kern <raunator@gmail.com>
+ * @author Aparup Banerjee <aparup@moodle.com>, Dongsheng Cai <dongsheng@moodle.com>, Raul Kern <raunator@gmail.com>
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  */
 
-define('WIKIMEDIA_THUMBS_PER_PAGE', 24);
-define('WIKIMEDIA_FILE_NS', 6);
-define('WIKIMEDIA_IMAGE_SIDE_LENGTH', 1024);
-define('WIKIMEDIA_THUMB_SIZE', 120);
+define('MEDIAWIKI_THUMBS_PER_PAGE', 24);
+define('MEDIAWIKI_FILE_NS', 6);
+define('MEDIAWIKI_IMAGE_SIDE_LENGTH', 1024);
+define('MEDIAWIKI_THUMB_SIZE', 120);
 
-class wikimedia {
+class mediawiki {
     private $_conn  = null;
     private $_param = array();
 
@@ -158,14 +158,14 @@ class wikimedia {
         $this->_param['action'] = 'query';
         $this->_param['generator'] = 'search';
         $this->_param['gsrsearch'] = $keyword;
-        $this->_param['gsrnamespace'] = WIKIMEDIA_FILE_NS;
-        $this->_param['gsrlimit'] = WIKIMEDIA_THUMBS_PER_PAGE;
-        $this->_param['gsroffset'] = $page * WIKIMEDIA_THUMBS_PER_PAGE;
+        $this->_param['gsrnamespace'] = MEDIAWIKI_FILE_NS;
+        $this->_param['gsrlimit'] = MEDIAWIKI_THUMBS_PER_PAGE;
+        $this->_param['gsroffset'] = $page * MEDIAWIKI_THUMBS_PER_PAGE;
         $this->_param['prop']   = 'imageinfo';
         $this->_param['iiprop'] = 'url|dimensions|mime|timestamp|size|user';
         $this->_param += $params;
-        $this->_param += array('iiurlwidth' => WIKIMEDIA_IMAGE_SIDE_LENGTH,
-            'iiurlheight' => WIKIMEDIA_IMAGE_SIDE_LENGTH);
+        $this->_param += array('iiurlwidth' => MEDIAWIKI_IMAGE_SIDE_LENGTH,
+            'iiurlheight' => MEDIAWIKI_IMAGE_SIDE_LENGTH);
         // didn't work with POST
         $content = $this->_conn->get($this->api, $this->_param);
         $result = unserialize($content);
@@ -186,7 +186,7 @@ class wikimedia {
                             'image_width' => $page['imageinfo'][0]['thumbwidth'],
                             'image_height' => $page['imageinfo'][0]['thumbheight']
                         );
-                        if ($attrs['image_width'] <= WIKIMEDIA_THUMB_SIZE && $attrs['image_height'] <= WIKIMEDIA_THUMB_SIZE) {
+                        if ($attrs['image_width'] <= MEDIAWIKI_THUMB_SIZE && $attrs['image_height'] <= MEDIAWIKI_THUMB_SIZE) {
                             $attrs['realthumbnail'] = $attrs['source'];
                         }
                         if ($attrs['image_width'] <= 24 && $attrs['image_height'] <= 24) {
@@ -203,7 +203,7 @@ class wikimedia {
                     }
                     $attrs += array(
                         'realthumbnail' => $this->get_thumb_url($commonsdir, $page['imageinfo'][0]['url'],
-                                $page['imageinfo'][0]['width'], $page['imageinfo'][0]['height'], WIKIMEDIA_THUMB_SIZE),
+                                $page['imageinfo'][0]['width'], $page['imageinfo'][0]['height'], MEDIAWIKI_THUMB_SIZE),
                         'realicon' => $this->get_thumb_url($commonsdir, $page['imageinfo'][0]['url'],
                                 $page['imageinfo'][0]['width'], $page['imageinfo'][0]['height'], 24),
                         'author' => $page['imageinfo'][0]['user'],
@@ -214,9 +214,9 @@ class wikimedia {
                 }
                 $filesarray[] = array(
                     'title'=>substr($title, 5),         // chop off 'File:'
-                    'thumbnail' => $OUTPUT->pix_url(file_extension_icon(substr($title, 5), WIKIMEDIA_THUMB_SIZE))->out(false),
-                    'thumbnail_width' => WIKIMEDIA_THUMB_SIZE,
-                    'thumbnail_height' => WIKIMEDIA_THUMB_SIZE,
+                    'thumbnail' => $OUTPUT->pix_url(file_extension_icon(substr($title, 5), MEDIAWIKI_THUMB_SIZE))->out(false),
+                    'thumbnail_width' => MEDIAWIKI_THUMB_SIZE,
+                    'thumbnail_height' => MEDIAWIKI_THUMB_SIZE,
                     'license' => 'cc-sa',
                     // the accessible url of the file
                     'url'=>$page['imageinfo'][0]['descriptionurl']

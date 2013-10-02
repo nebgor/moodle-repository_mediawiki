@@ -66,7 +66,7 @@ class repository_mediawiki extends repository {
      */
     public function get_maxwidth() {
         $param = optional_param('mediawiki_maxwidth', 0, PARAM_INT);
-        $pref = get_user_preferences('repository_mediawiki_maxwidth', WIKIMEDIA_IMAGE_SIDE_LENGTH);
+        $pref = get_user_preferences('repository_mediawiki_maxwidth', MEDIAWIKI_IMAGE_SIDE_LENGTH);
         if ($param > 0 && $param != $pref) {
             $pref = $param;
             set_user_preference('repository_mediawiki_maxwidth', $pref);
@@ -84,7 +84,7 @@ class repository_mediawiki extends repository {
      */
     public function get_maxheight() {
         $param = optional_param('mediawiki_maxheight', 0, PARAM_INT);
-        $pref = get_user_preferences('repository_mediawiki_maxheight', WIKIMEDIA_IMAGE_SIDE_LENGTH);
+        $pref = get_user_preferences('repository_mediawiki_maxheight', MEDIAWIKI_IMAGE_SIDE_LENGTH);
         if ($param > 0 && $param != $pref) {
             $pref = $param;
             set_user_preference('repository_mediawiki_maxheight', $pref);
@@ -153,13 +153,13 @@ class repository_mediawiki extends repository {
             'label' => get_string('maxwidth', 'repository_mediawiki').': ',
             'type' => 'text',
             'name' => 'mediawiki_maxwidth',
-            'value' => get_user_preferences('repository_mediawiki_maxwidth', WIKIMEDIA_IMAGE_SIDE_LENGTH),
+            'value' => get_user_preferences('repository_mediawiki_maxwidth', MEDIAWIKI_IMAGE_SIDE_LENGTH),
         );
         $maxheight = array(
             'label' => get_string('maxheight', 'repository_mediawiki').': ',
             'type' => 'text',
             'name' => 'mediawiki_maxheight',
-            'value' => get_user_preferences('repository_mediawiki_maxheight', WIKIMEDIA_IMAGE_SIDE_LENGTH),
+            'value' => get_user_preferences('repository_mediawiki_maxheight', MEDIAWIKI_IMAGE_SIDE_LENGTH),
         );
         if ($this->options['ajax']) {
             $form = array();
